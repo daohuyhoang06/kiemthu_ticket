@@ -1,7 +1,7 @@
 
 # Đầu vào:
-# distance (số km bay)
-# luggage (trọng lượng hành lý ký gửi, kg)
+# distance (số km bay): int
+# luggage (trọng lượng hành lý ký gửi, kg): int 
 
 
 # Quy tắc tính giá vé:
@@ -23,8 +23,17 @@
 
 
 def calculate_ticket_price(distance, luggage):
+    # Ép kiểu int để đảm bảo đúng quy định
+    distance = int(distance)
+    luggage = int(luggage)
+
+    # Kiểm tra đầu vào hợp lệ
     if distance < 0 or luggage < 0 or distance > 1663 or luggage > 50:
         return "Invalid"
+
+    # Khai báo biến kiểu int
+    fare = 0
+    luggage_fee = 0
 
     # Tính giá vé theo khoảng cách
     if distance <= 500:
@@ -33,7 +42,7 @@ def calculate_ticket_price(distance, luggage):
         fare = distance * 900
     elif distance <= 1663:
         fare = distance * 800
-    
+
     # Tính phí hành lý
     if luggage <= 20:
         luggage_fee = 0
@@ -42,8 +51,9 @@ def calculate_ticket_price(distance, luggage):
     elif luggage <= 50:
         luggage_fee = luggage * 30000
 
-    return fare + luggage_fee
+    total_price = fare + luggage_fee
+    return total_price
 
 
 
-    
+   
